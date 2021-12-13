@@ -16,7 +16,7 @@ print(content.findAll("table", limit=2))
 print(f"{'='*100}\nClub table\n")
 clubs = content.find("table", {"class": "wikitable"})
 print(clubs.prettify())
-print(f"{'='*100}\n5 first club\n")
+print(f"{'='*100}\nPrint clubs\n")
 rows = clubs.findAll("tr", limit=20)[1:20]
 array = []
 for tr in rows:
@@ -26,6 +26,7 @@ for tr in rows:
     print(f"url: {tr.find('a').get('href')}")
     print("------")
 
-df4 = pd.DataFrame(array)
-df4.style
-print(df4.head())
+df = pd.DataFrame(array)
+df.style
+print(df.head())
+df.to_csv('clubs.csv', index=False)  
